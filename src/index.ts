@@ -418,7 +418,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   }
 
   if (name === "secure_execute_command") {
-    const { connection_id, command } = args;
+    const { connection_id, command } = args as { connection_id: string; command: string };
     if (!command?.trim()) throw new Error("Command cannot be empty.");
     const conn = connections.get(connection_id);
     if (!conn) throw new Error(`connection_id '${connection_id}' not found.`);
